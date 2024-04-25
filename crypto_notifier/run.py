@@ -13,7 +13,7 @@ def get_parser() -> argparse.ArgumentParser:
                         help='Set the logging level (e.g., DEBUG, INFO, WARNING, ERROR, CRITICAL)')
     parser.add_argument('--log-path',
                         type=str,
-                        default='bot.log',
+                        default='/var/log/bot.log',
                         help='Path to log file')
 
     return parser
