@@ -1,7 +1,9 @@
 version: '3.8'
 services:
   app:
-    build: .
+    build:
+      context: /crypto_notifier
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
     env_file:

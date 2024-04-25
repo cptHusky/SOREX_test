@@ -38,17 +38,7 @@ class CryptoNotifier:
     def __init__(self,
                  coinmarketcap_api_url: str,
                  coinmarketcap_token: str,
-                 telegram_token: str,
-                 log_level: str,
-                 log_path):
-        num_log_level = getattr(logging, log_level.upper())
-        logging.basicConfig(level=num_log_level,
-                            format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                            filename=log_path,
-                            filemode='a',
-                            encoding='utf-8')
-        logger.info(f"CryptoNotifier initializing, {log_level=}, {log_path=}")
-
+                 telegram_token: str):
         self.telegram_token = telegram_token
         self.client = CoinMarketCapClient(coinmarketcap_api_url, coinmarketcap_token)
         self.sender = TelegramMessageSender()
