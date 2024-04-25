@@ -150,5 +150,5 @@ class CryptoNotifier:
         application.add_handler(MessageHandler(filters.COMMAND, self.handle_unknown_message))
         application.add_handler(MessageHandler(filters.TEXT, self.handle_unknown_message))
         j = application.job_queue
-        j.run_repeating(self.check_prices, interval=10, first=0)
+        j.run_repeating(self.check_prices, interval=60, first=0)
         application.run_polling()
