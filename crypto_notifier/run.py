@@ -5,11 +5,20 @@ from crypto_notifier import CryptoNotifier
 
 
 def get_settings():
-    return {
+    env_settings = {
         'telegram_token': os.getenv('TELEGRAM_TOKEN'),
         'coinmarketcap_token': os.getenv('COINMARKETCAP_TOKEN'),
         'coinmarketcap_api_url': os.getenv('COINMARKETCAP_API_URL'),
     }
+
+    class ConfigError(Exception):
+        pass
+
+    for setting, value in env_settings.items():
+        if value is None:
+            raise ConfigError(f"{setting.upper()} is not provided in .env file")
+
+    return env_settings
 
 
 def get_parser() -> argparse.ArgumentParser:
